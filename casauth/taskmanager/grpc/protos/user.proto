@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  rpc verify_token (TokeRequest) returns (User);
+  rpc get_user (UserRequest) returns (User);
+  rpc get_ldap_info (UserRequest) returns (Ldap);
+}
+
+message TokeRequest {
+  string token = 1;
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message Ldap {
+  string dc = 1;
+  string ou = 2;
+  string cn = 3;
+  string password = 4;
+  string domain_name = 5;
+  string project_name = 6;
+  string project_dn = 7; // Project domain name
+  string user_dn = 8; // User domain name
+}
+
+message User {
+  int32 id = 1;
+  string user_name = 2;
+  string email = 3;
+  string full_name = 4;
+  string user_type = 5;
+  string account_type = 6;
+  string role = 7;
+  string status = 8;
+}

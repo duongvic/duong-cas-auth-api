@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package mails;
+
+message MailReply {
+  bool status = 1;
+}
+
+message ActiveUserRequest {
+  User user = 1;
+  string token = 2;
+}
+
+message User {
+  string user_name = 1;
+  string email = 2;
+  string full_name = 3;
+}
+
+message SSHKey {
+  bytes content = 1;
+}
+
+message Compute {
+  string email = 1;
+  string user_name = 2;
+  string password = 3;
+  string public_ip = 4;
+  string ssh_port = 5;
+  int32 cpu = 6;
+  int32 ram = 7;
+  int32 disk = 8;
+}
+
+message Keypair {
+  string user_name = 1;
+  string email = 2;
+  string name = 3;
+  SSHKey public_key = 4;
+  SSHKey private_key = 5;
+}

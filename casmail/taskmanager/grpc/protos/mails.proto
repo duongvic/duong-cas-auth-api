@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package mails;
+
+import "mail_types.proto";
+
+service MailService {
+  rpc active_user (ActiveUserRequest) returns (mails.MailReply);
+  rpc reset_password (User) returns (mails.MailReply);
+  rpc send_keypair (stream Keypair) returns (mails.MailReply);
+  rpc send_compute_info(Compute) returns (mails.MailReply);
+  rpc send_user_s3(Users3) returns (mails.MailReply);
+}
